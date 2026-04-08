@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../assets/CPMS.png';
 import Toast from '../../components/Toast';
@@ -41,6 +41,7 @@ function LoginTPO() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     if (!formData?.email && !formData?.password) return setError({ email: 'Email Required!', password: 'Password Required!' })
     if (!formData?.email) return setError({ email: 'Email Required!' })
     if (!formData?.password) return setError({ password: 'Password Required!' })
@@ -48,7 +49,9 @@ function LoginTPO() {
     setLoading(true);
 
     try {
+      console.log("Above call....")
       const response = await axios.post(`${BASE_URL}/tpo/login`, formData);
+      console.log("RESponse: ", response);
       localStorage.setItem('token', response.data.token);
       navigate('/tpo/dashboard');
     } catch (error) {

@@ -1,23 +1,38 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function ViewNotice() {
-  document.title = 'CPMS | Notice';
+  // 1. Move document.title inside useEffect
+  useEffect(() => {
+    document.title = 'CPMS | Notice'; // This is now safe
+    fetchNotice();
+  }, []);
+  
   const navigate = useNavigate();
   const noticeId = useParams();
+  // console.log("notice id: ", noticeId);
   const [notice, setNotice] = useState({});
 
   const fetchNotice = async () => {
     try {
-      if (!noticeId) return;
-      const response = await axios.get(`${BASE_URL}/management/get-notice?noticeId=${noticeId.noticeId}`);
-      // console.log(response?.data);
-      setNotice(response?.data);
-    } catch (error) {
-      console.log("error while fetching notice => ", error);
-    }
+    const token = localStorage.getItem('token');
+    
+    const id = noticeId.noticeId?.trim(); 
+    
+    if (!id) return;
+
+    const response = await axios.get(`${BASE_URL}/management/get-notice`, {
+      params: { noticeId: id },
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+
+    // console.log("Response data:", response.data);
+    setNotice(response.data);
+  } catch (error) {
+    console.error("error while fetching notice => ", error);
+  }
   }
 
   useEffect(() => {

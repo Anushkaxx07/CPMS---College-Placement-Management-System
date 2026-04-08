@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -42,6 +42,8 @@ function NoticeBox() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
       });
+
+      // console.log("Notices: ", response);
 
       let filteredNotices = [];
       if (currentUser?.role === 'management_admin') {

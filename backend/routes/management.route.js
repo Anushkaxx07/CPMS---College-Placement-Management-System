@@ -29,7 +29,8 @@ router.post('/deletetpo', authenticateToken, DeleteTPO);
 
 // add management, tpo and student
 router.post('/addtpo', authenticateToken, AddTPO);
-router.post('/add-management', authenticateToken, AddManagement);
+// router.post('/add-management', authenticateToken, AddManagement);
+router.post('/add-management', AddManagement);
 router.post('/add-student', authenticateToken, AddStudent);
 
 // notices all route here 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -82,7 +82,7 @@ function UserDetails() {
         if (error.response.data) {
           setToastMessage(error.response.data.msg);
           setShowToast(true);
-          if (error.response.data.msg === "Student not found" || "user not found")
+          if (error?.response?.data?.msg === "Student not found" || "user not found")
             navigate("../404")
         }
         console.error("Error fetching student data", error);

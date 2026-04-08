@@ -136,8 +136,7 @@ cd college-placement-management-system
    ```
 
 ## Contributors
-- **Member 1**: [Moin MN](https://www.linkedin.com/in/moinnaik/)
-- **Member 2**: Rafat Muskan Shaikh
-- **Member 3**: Saquib Patel
-- **Member 4**: Neeraj Kumar
+* **Sneha Kumari** – [LinkedIn](https://www.linkedin.com/in/snehaaa01/)
+* **Anushka Upadhaya** – [LinkedIn](https://www.linkedin.com/in/anushka-upadhyay-563723274/)
+* **Akshat Varshanay** – [LinkedIn](https://www.linkedin.com/in/akshatvarshney10/)
 

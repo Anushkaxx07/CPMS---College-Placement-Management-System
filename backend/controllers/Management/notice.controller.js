@@ -31,13 +31,22 @@ const GetAllNotice = async (req, res) => {
 
 const GetNotice = async (req, res) => {
   try {
-    // console.log(req.query.noticeId)
-    const notice = await Notice.findById(req.query.noticeId);
-    // console.log(notice)
+    const { noticeId } = req.query;
+    
+    if (!noticeId) {
+      return res.status(400).json({ msg: "Notice ID is required" });
+    }
+
+    const notice = await Notice.findById(noticeId);
+    
+    if (!notice) {
+      return res.status(404).json({ msg: "Notice not found" });
+    }
+
     return res.json(notice);
   } catch (error) {
     console.log('error in notice.controller.js => ', error);
-    return res.json({ msg: "Internal Server Error!" });
+    return res.status(500).json({ msg: "Internal Server Error!" });
   }
 }
 

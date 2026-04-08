@@ -24,7 +24,7 @@ router.get('/all-users', authenticateToken, AllUsersLen);
 
 router.get('/:userId', authenticateToken, UserData);
 
-router.post('/upload-photo', upload.single('profileImgs'), UpdatePhoto);
+router.post('/upload-photo', authenticateToken, upload.single('profileImgs'), UpdatePhoto);
 
 router.post('/update-profile', authenticateToken, UpdateProfile);
 

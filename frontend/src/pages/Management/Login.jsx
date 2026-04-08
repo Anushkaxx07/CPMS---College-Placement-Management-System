@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Logo from '../../assets/CPMS.png';
@@ -47,9 +47,14 @@ function LoginManagement() {
     if (!formData?.email) return setError({ email: 'Email Required!' })
     if (!formData?.password) return setError({ password: 'Password Required!' })
 
+      console.log("Formdata on frontend: ", formData);
+      
     setLoading(true);
     try {
+      console.log("Above call....")
       const response = await axios.post(`${BASE_URL}/management/login`, formData);
+      console.log("RESPONSE: ", response);
+
       localStorage.setItem('token', response.data.token);
       navigate('/management/dashboard');
     } catch (error) {

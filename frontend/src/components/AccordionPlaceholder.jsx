@@ -1,45 +1,36 @@
+import { useEffect } from 'react';
 import { Accordion, Placeholder } from 'react-bootstrap';
 
 const AccordionPlaceholder = () => {
+  
+  useEffect(() => {
+    document.title = 'CPMS | Loading Students...';
+  }, []);
+
   return (
-    <Accordion defaultActiveKey={['1']} flush className="flex flex-col gap-4">
-      {/* 4th Year */}
-      <Accordion.Item
-        eventKey="1"
-        className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400"
-      >
-        <Accordion.Header>Fourth Year</Accordion.Header>
-        <Accordion.Body>
-          <Accordion flush defaultActiveKey={['Computer']} className="flex flex-col gap-2">
-            {[...Array(5)].map((_, idx) => (
-              <Placeholder key={idx} as="p" animation="glow">
-                <Placeholder className='w-full' />
+    <Accordion defaultActiveKey="0" flush className="flex flex-col gap-4">
+      {['Fourth Year', 'Third Year', 'Second Year', 'First Year'].map((year, index) => (
+        <Accordion.Item
+          key={index}
+          eventKey={index.toString()}
+          className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400"
+        >
+          <Accordion.Header>{year}</Accordion.Header>
+          <Accordion.Body>
+            <div className="flex flex-col gap-3">
+              {/* Simulating the Department nested accordion and Table rows */}
+              <Placeholder as="div" animation="wave">
+                <Placeholder xs={3} className="mb-3 rounded" /> {/* Dept Name Placeholder */}
+                <div className="space-y-2">
+                  {[...Array(3)].map((_, idx) => (
+                    <Placeholder key={idx} xs={12} className="rounded py-2" />
+                  ))}
+                </div>
               </Placeholder>
-            ))}
-          </Accordion>
-        </Accordion.Body>
-      </Accordion.Item>
-
-      {/* 3rd Year */}
-      <Accordion.Item
-        className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400"
-      >
-        <Accordion.Header>Third Year</Accordion.Header>
-      </Accordion.Item>
-
-      {/* 2nd Year */}
-      <Accordion.Item
-        className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400"
-      >
-        <Accordion.Header>Second Year</Accordion.Header>
-      </Accordion.Item>
-
-      {/* 1st Year */}
-      <Accordion.Item
-        className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg shadow shadow-red-400"
-      >
-        <Accordion.Header>First Year</Accordion.Header>
-      </Accordion.Item>
+            </div>
+          </Accordion.Body>
+        </Accordion.Item>
+      ))}
     </Accordion>
   );
 };

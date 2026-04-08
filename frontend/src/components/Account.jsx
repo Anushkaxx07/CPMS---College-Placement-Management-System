@@ -39,14 +39,23 @@ function Account() {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
+
+      // Create a clean copy of the data
+      const updatedData = { ...data };
+    
+      // If gender is the string "undefined", remove it or set to a valid value
+      if (updatedData.gender === "undefined" || !updatedData.gender) {
+        delete updatedData.gender; 
+      }
       const response = await axios.post(`${BASE_URL}/user/update-profile`,
-        data,
+        updatedData,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
           }
         }
       );
+      
       setToastMessage(response.data.msg);
       setShowToast(true);
     } catch (error) {
@@ -66,16 +75,24 @@ function Account() {
     if (file) {
       const formData = new FormData();
       formData.append('profileImgs', file);
+      console.log("DATA: ", data);
       formData.append('userId', data.id);
 
+      // To verify in your console:
+      for (let [key, value] of formData.entries()) {
+        console.log(key, value);
+      }
+
       try {
-        // const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
+        console.log("TOKEN in ACCOUNT.JSX: ", token);
+
         const response = await axios.post(`${BASE_URL}/user/upload-photo`, formData
-          // , {
-          // headers: {
-          //   'Authorization': `Bearer ${token}`,
-          //   'Content-Type': 'multipart/form-data'
-          // }}
+          , {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }}
         );
         setToastMessage(response.data.msg);
         setShowToast(true);
@@ -261,7 +278,7 @@ function Account() {
                           aria-label="Floating label select gender"
                           className='cursor-pointer'
                           name='gender'
-                          value={data?.gender === undefined ? "undefined" : data?.gender}
+                          value={data?.gender === "undefined" || !data?.gender ? "" : data?.gender}
                           onChange={handleBasicDetailChange}
                         >
                           <option disabled value="undefined" className='text-gray-400'>Enter Your Gender</option>
