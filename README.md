@@ -131,5 +131,5 @@ cd college-placement-management-system
    ```bash
    npm run dev
    ```
-- **Member 4**: Neeraj Kumar
+
 
