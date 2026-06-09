@@ -34,8 +34,6 @@ app.use('/company', require('./routes/company.route'));
 app.use('/test', (req, res)=>{
   res.status(200).send("Working Fine!");
 });
+module.exports = app;
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`server is running in http://localhost:${process.env.PORT}`);
-});
