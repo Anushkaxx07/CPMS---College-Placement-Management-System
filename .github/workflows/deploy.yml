@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          
 
       - name: Install dependencies
         run: npm install
@@ -36,6 +35,9 @@ jobs:
       - name: Build frontend
         run: npm run build
         working-directory: frontend
+
+      - name: Support SPA routing on GitHub Pages
+        run: cp frontend/dist/index.html frontend/dist/404.html
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
