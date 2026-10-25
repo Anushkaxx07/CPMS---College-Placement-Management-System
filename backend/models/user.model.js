@@ -111,6 +111,29 @@ const UserSchema = new mongoose.Schema({
 
 });
 
+// =========================================================================
+// 🚀 SYSTEM DESIGN & PERFORMANCE INDEXES (ADD THESE HERE)
+// =========================================================================
+
+// 1. Shortlisting Optimization Index:
+// Speeds up TPO queries filtering students by branch, year, active KTs, and approval status
+UserSchema.index({
+  role: 1,
+  'studentProfile.department': 1,
+  'studentProfile.year': 1,
+  'studentProfile.liveKT': 1,
+  'studentProfile.isApproved': 1
+});
+
+// 2. Application Lookup Index:
+// Speeds up checking whether a student has already applied to a specific job
+UserSchema.index({
+  _id: 1,
+  'studentProfile.appliedJobs.jobId': 1
+});
+
+// =========================================================================
+
 
 // Middleware to delete job applicants before deleting the user
 UserSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
