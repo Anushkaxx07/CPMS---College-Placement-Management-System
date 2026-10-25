@@ -32,41 +32,68 @@
 
 ## Project Structure
 ```plaintext
-├── frontend
-│   ├── public
-│   ├── src
-│   │   ├── api
-│   │   ├── assets
-│   │   ├── components
-│   │   │   ├── LandingPages
-│   │   │   └── students
-│   │   ├── context
-│   │   ├── hooks
-│   │   ├── pages
-│   │   ├── styles
-│   │   ├── utility
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── .env (NOTE: YOU NEED TO CREATE THIS FILE)
-│   ├── .gitignore
-│   ├── .eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── tailwind.config.js
-│   └── vite.config.js
+├── ├── .github
+│   └── workflows
 ├── backend
 │   ├── config
 │   ├── controllers
 │   ├── middleware
 │   ├── models
 │   ├── routes
-│   ├── .env (NOTE: YOU NEED TO CREATE THIS FILE)
+│   ├── utlis
+│   ├── .dockerignore
+│   ├── .env
 │   ├── .gitignore
+│   ├── Dockerfile
 │   ├── index.js
 │   ├── package.json
-│   └── package-lock.json
+│   ├── package-lock.json
+│   ├── seed.js
+│   └── vercel.json
+├── docs
+│   ├── adr
+│   │   ├── 0001-stateless-jwt...
+│   │   └── 0002-cloudinary...
+│   ├── architecture
+│   │   ├── data-flow.md
+│   │   └── system-architecture...
+│   └── database-schema.md
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   │   ├── LandingPages
+│   │   │   ├── Management
+│   │   │   ├── Students
+│   │   │   ├── SuperUser
+│   │   │   └── TPO
+│   │   ├── context
+│   │   ├── hooks
+│   │   ├── pages
+│   │   │   ├── Management
+│   │   │   ├── students
+│   │   │   └── TPO
+│   │   ├── style
+│   │   ├── utility
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── .env
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── vercel.json
+│   └── vite.config.js
+├── kubernetes
+├── docker-compose.yaml
+├── LICENSE
+├── vercel.json
 └── README.md
 ```
 
