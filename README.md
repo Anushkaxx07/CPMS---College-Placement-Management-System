@@ -132,4 +132,11 @@ cd college-placement-management-system
    npm run dev
    ```
 
+##  System Design & Architecture
 
+CPMS is engineered with a multi-tier decoupled architecture designed to handle peak application windows and rapid automated candidate shortlisting.
+
+-  **Detailed Architecture**: [docs/architecture/system-architecture.md](docs/architecture/system-architecture.md)
+-  **Data Flow & Sequence**: [docs/architecture/data-flow.md](docs/architecture/data-flow.md)
+-  **Database Indexing & Schema**: [docs/database-schema.md](docs/database-schema.md)
+-  **Architectural Decision Records (ADRs)**: [docs/adr/](docs/adr/)

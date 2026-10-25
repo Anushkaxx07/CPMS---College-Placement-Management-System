@@ -99,6 +99,18 @@ const UserSchema = new mongoose.Schema({
 
 });
 
+UserSchema.index({
+  role: 1,
+  'studentProfile.department': 1,
+  'studentProfile.year': 1,
+  'studentProfile.liveKT': 1,
+  'studentProfile.isApproved': 1
+});
+
+UserSchema.index({
+  _id: 1,
+  'studentProfile.appliedJobs.jobId': 1
+});
 
 // Middleware to delete job applicants before deleting the user
 UserSchema.pre('deleteOne', { document: true, query: false }, async function (next) {
